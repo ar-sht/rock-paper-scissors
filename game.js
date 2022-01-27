@@ -9,6 +9,11 @@ function displayResult(message) {
     return
 }
 
+function resetGame() {
+    document.getElementById("results").innerHTML = "Results Shown Here:"
+    return
+}
+
 function playRound(playerSelection, computerSelection) {
     if (playerSelection.toLowerCase() === "rock") {
         if (computerSelection === "Paper") {
@@ -56,13 +61,6 @@ function game() {
     document.getElementById("rock").onclick = function () { playRound('rock', computerPlay()) }
     document.getElementById("paper").onclick = function () { playRound('paper', computerPlay()) }
     document.getElementById("scissors").onclick = function () { playRound('scissors', computerPlay()) }
-    console.log(`Your record was: ${wins}-${losses}-${ties}.`)
-    if (wins > losses) {
-        console.log("You beat the Computer! :)")
-    } else if (losses > wins) {
-        console.log("The Computer beat you... :(")
-    } else {
-        console.log("You tied the Computer. :|")
-    }
+    document.getElementById("reset").onclick = function () { resetGame() }
 }
 game()
