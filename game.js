@@ -9,12 +9,16 @@ function displayResult(message) {
     return
 }
 
+function displayRecord(wins, losses, ties) {
+    document.getElementById("record").innerHTML = `${wins}-${losses}-${ties}`
+}
+
 function resetGame() {
     document.getElementById("results").innerHTML = "Results Shown Here:"
     return
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection, wins, losses, ties) {
     if (playerSelection.toLowerCase() === "rock") {
         if (computerSelection === "Paper") {
             result = 10
@@ -43,24 +47,21 @@ function playRound(playerSelection, computerSelection) {
         }
     }
     if (result % 10 === 0) {
-        let message = `<br>You lose, ${computerSelection} beats ${playerSelection}!`
+        let message = `<br>Loss: The Computer picked ${computerSelection} which beats ${playerSelection}`
         displayResult(message)
     } else if (result % 10 === 1) {
-        let message = `<br>You win, ${playerSelection} beats ${computerSelection}!`
+        let message = `<br>Win: The computer picked ${computerSelection} which loses to ${playerSelection}!`
         displayResult(message)
     } else {
-        let message = `<br>It's a tie! The computer also picked ${computerSelection}`
+        let message = `<br>Tie: The Computer also picked ${computerSelection}`
         displayResult(message)
     }
 }
 
 function game() {
-    let losses = 0
-    let wins = 0
-    let ties = 0
-    document.getElementById("rock").onclick = function () { playRound('rock', computerPlay()) }
-    document.getElementById("paper").onclick = function () { playRound('paper', computerPlay()) }
-    document.getElementById("scissors").onclick = function () { playRound('scissors', computerPlay()) }
+    document.getElementById("rock").onclick = function () { playRound('Rock', computerPlay()) }
+    document.getElementById("paper").onclick = function () { playRound('Paper', computerPlay()) }
+    document.getElementById("scissors").onclick = function () { playRound('Scissors', computerPlay()) }
     document.getElementById("reset").onclick = function () { resetGame() }
 }
 game()
