@@ -1,2 +1,3 @@
 # rock-paper-scissors
-TOP Rock, Paper, Scissors JS Project
+TOP fundamentals Rock, Paper, Scissors project
+HTML, CSS and JS
